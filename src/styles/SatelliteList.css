@@ -12,3 +12,22 @@
     font-size: 1em;
     color: white;
 }
+
+.btn-container {
+    text-align: center;
+  }
+  
+  .sat-list {
+    height: 300px;
+    overflow: auto;
+  }
+  
+  .spin-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 335px;
+  }
+  
+  
+  
