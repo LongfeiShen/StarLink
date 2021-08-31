@@ -4,21 +4,18 @@ import axios from 'axios';
 import SatSetting from './SatSetting';
 import SatelliteList from './SatelliteList';
 import { NEARBY_SATELLITE, SAT_API_KEY, STARLINK_CATEGORY } from "../constants";
+import WorldMap from './WorldMap';
 
 class Main extends Component {
     constructor(){
         super();
         this.state = {
             satInfo: null,
-            settings: null,
             isLoadingList: false
         };
     }
 
     showNearbySatellite = (setting) => {
-        this.setState({
-            settings: setting
-        })
         this.fetchSatellite(setting);
     }
 
@@ -41,7 +38,11 @@ class Main extends Component {
        .catch(error => {
            console.log('err in fetch satellite -> ', error);
        })
-}
+    }
+
+    showMap = () => {
+        console.log('show on the map');
+    }
 
     render() {
         const { satInfo } = this.state;
@@ -51,10 +52,11 @@ class Main extends Component {
                     <SatSetting onShow={this.showNearbySatellite}/>
                     <SatelliteList satInfo={satInfo}
                                    isLoad={this.state.isLoadingList}
+                                   onShowMap={this.showMap}
                     />
                 </Col>
                 <Col span={16} className="right-side">
-                    right
+                    <WorldMap />
                 </Col>
             </Row>
         );
